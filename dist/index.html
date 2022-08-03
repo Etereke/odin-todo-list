@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do list</title>
+</head>
+<body>
+    <div class="content">
+        <div class="projects">
+            <div class="default"></div>
+            <div class="projects">
+                <div class="project-header"></div>
+                <div class="project-item"></div>
+                <div class="project-item"></div>
+                <div class="project-item"></div>
+                <div class="add-item"></div>
+            </div>
+        </div>
+        <div class="tasks">
+            <div class="project-name"></div>
+            <div class="task-row">
+                <div class="task-name"></div>
+                <div class="task-date"></div>
+                <div class="btns">
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                </div>
+            </div>
+            <div class="task-row active">
+                <div class="task-name"></div>
+                <div class="task-date"></div>
+                <div class="btns">
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                </div>
+                <div class="task-desc"></div>
+            </div>
+            <div class="task-row">
+                <div class="task-name"></div>
+                <div class="task-date"></div>
+                <div class="btns">
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                </div>
+            </div>
+            <div class="task-new"></div>
+            <div class="task-add">
+                <div class="task-new-name">
+                    <label for="task-name"></label>
+                    <input type="text" name="task-name" id="task-name">
+                </div>
+                <div class="task-new-desc">
+                    <label for="task-desc"></label>
+                    <textarea name="task-desc" id="task-desc" cols="30" rows="10"></textarea>
+                </div>
+                <div class="task-new-date">
+                    <label for="task-date"></label>
+                    <input type="date" name="task-date" id="task-date">
+                </div>
+                <div class="task-new-prio">
+                    <label for="task-prio"></label>
+                    <select name="task-prio" id="task-prio">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="add-btns">
+                    <button></button>
+                    <button></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
