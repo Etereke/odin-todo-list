@@ -16,7 +16,7 @@ body{
     display: flex;
     flex-direction: column;
 
-    padding: 5px 10px;
+    padding: 20px 10px;
 
     background-color:rgb(145, 174, 212);
     font-size: 2rem;
@@ -27,6 +27,7 @@ body{
 }
 
 .default-project{
+    font-size: 1.5rem;
     border-bottom: 2px solid steelblue;
     cursor: pointer;
 }
@@ -56,7 +57,7 @@ body{
     padding-left: 5px;
 }
 
-.add-project > span{
+.add-project > span, .task-add > span{
     border: 1px solid steelblue;
     border-radius: 20px;
     padding: 4px 8px;
@@ -64,40 +65,104 @@ body{
     
 }
 
-.add-project > span:hover, .project-item:hover, .default-project:hover{
+.add-project > span:hover, .project-item:hover, .default-project:hover, .task-add > span:hover, .task-row:hover{
     background-color: steelblue;
     color: white;
 }
 
-.tasks{
-
+.main-content{
+    padding: 10px 20px;
+    font-size: 1.2rem;
 }
 
 .project-name{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
+.tasks{
+    display: flex;
+    flex-direction: column;
 }
 
 .task-row{
+    display: grid;
+    grid-template-columns: 1fr 100px 250px;
+    width: max(60%, 800px);
 
+    padding: 15px 5px;
+    border-left: 5px solid steelblue;
+    border-bottom: 1px solid steelblue;
+    
+}
+.task-row:first-child{
+    border-top: 1px solid steelblue;
 }
 
-.task-name{
-
+.task-add{
+    margin-top: 15px;
+    padding-left: 15px;
 }
 
-.task-date{
-
+.task-btns{
+    padding-left: 20px;
 }
 
-.btns{
-
+.task-btns > button, .add-btns > button, .content-header>button{
+    background-color: rgb(53, 53, 54);
+    color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 5px 0px;
+    width: 60px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.active{
-
+.task-btns > button:hover, .add-btns>button:hover, .content-header>button:hover{
+    color: rgb(53, 53, 54);
+    background-color: white;
 }
 
 .task-desc{
-
+    padding-left: 20px;
+    margin: 10px;
+    font-size: 1rem;
 }
 
+.task-add-form{
+    margin-top: 20px;
+    width: max(40%, 500px);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-items: start;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-transform: capitalize;
+    font-size: 1rem;
+    color: gray;
+}
+
+.input-field > input{
+}
+
+.content-header{
+    width: max(60%, 800px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-header>button{
+    width: 180px;
+    height: 40px;
+    font-size: 1.2rem;
+    padding: 0;
+}
