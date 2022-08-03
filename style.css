@@ -1,0 +1,103 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: rgb(240, 237, 231);
+    box-sizing: border-box;
+}
+
+.content{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.sidebar{
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+
+    padding: 5px 10px;
+
+    background-color:rgb(145, 174, 212);
+    font-size: 2rem;
+}
+
+.default-project, .project-header{
+    font-weight: bold;
+}
+
+.default-project{
+    border-bottom: 2px solid steelblue;
+    cursor: pointer;
+}
+
+.projects{
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+.project-header{
+
+}
+
+.project-item{
+    border-bottom: 1px solid steelblue;
+    border-left: 5px solid steelblue;
+    cursor: pointer;
+}
+
+.project-item:first-child{
+    border-top: 1px solid steelblue;
+}
+
+.add-project{
+    margin-top: 10px;
+    font-style: normal;
+    padding-left: 5px;
+}
+
+.add-project > span{
+    border: 1px solid steelblue;
+    border-radius: 20px;
+    padding: 4px 8px;
+    cursor: pointer;
+    
+}
+
+.add-project > span:hover, .project-item:hover, .default-project:hover{
+    background-color: steelblue;
+    color: white;
+}
+
+.tasks{
+
+}
+
+.project-name{
+
+}
+
+.task-row{
+
+}
+
+.task-name{
+
+}
+
+.task-date{
+
+}
+
+.btns{
+
+}
+
+.active{
+
+}
+
+.task-desc{
+
+}
+
