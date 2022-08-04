@@ -55,6 +55,7 @@ body{
     margin-top: 10px;
     font-style: normal;
     padding-left: 5px;
+    font-size: 1.5rem;
 }
 
 .add-project > span, .task-add > span{
@@ -65,7 +66,7 @@ body{
     
 }
 
-.add-project > span:hover, .project-item:hover, .default-project:hover, .task-add > span:hover, .task-row:hover{
+.add-project > span:hover, .project-item:hover, .default-project:hover, .task-add > span:hover{
     background-color: steelblue;
     color: white;
 }
@@ -141,6 +142,10 @@ body{
     justify-items: start;
 }
 
+.hidden {
+    display: none;
+  }
+
 .input-field{
     display: flex;
     flex-direction: column;
@@ -165,4 +170,16 @@ body{
     height: 40px;
     font-size: 1.2rem;
     padding: 0;
+}
+
+.prio-high:hover{
+    background-color: red;
+}
+
+.prio-medium:hover{
+    background-color: yellow;
+}
+
+.prio-low:hover{
+    background-color: green;
 }
