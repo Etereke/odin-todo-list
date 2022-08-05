@@ -14,8 +14,10 @@ export default class LogicHandler{
         if(projectsRaw){
             for(let projectRaw of projectsRaw){
                 let project = new Project(projectRaw.name);
-                for(let task of projectRaw.tasks){
-                    project.tasks.push(task);
+                if(projectRaw.tasks){
+                    for(let task of projectRaw.tasks){
+                        project.tasks.push(task);
+                    }
                 }
                 this.projectList.push(project);
             }

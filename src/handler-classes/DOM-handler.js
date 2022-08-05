@@ -9,12 +9,11 @@ export default class DOMHandler{
     BuildSite(projects, currentProject){
         this.content.innerHTML = '';
         this.content.appendChild(createSidebar(projects));
-        this.BuildProject(currentProject);
+        this.CreateMainContent(currentProject);
     }
 
-    SetActiveProject(idx){
+    SetActiveProject(idx, project){
         const active = document.querySelector('.active-project');
-        console.log(active);
         if(active){
             active.classList.remove('active-project');
         }
@@ -24,6 +23,7 @@ export default class DOMHandler{
         else{
             document.querySelector(`[data-idx='${idx}']`).classList.add('active-project');
         }
+        this.CreateMainContent(project);
     }
 
     ToggleNewProjectForm(){
@@ -36,7 +36,26 @@ export default class DOMHandler{
         addProjectForm.hidden = !addProjectForm.hidden;
     }
 
-    BuildProject(currentProject){
-        //this.content.appendChild(createMainContent(currentProject));
+    ToggleNewTaskForm(){
+        const addTask = document.querySelector('.task-add');
+        addTask.hidden = !addTask.hidden;
+        const addTaskForm = document.querySelector('.task-add-form');
+        addTaskForm.classList.toggle('hidden');
+        [...document.querySelectorAll('.input-field')].forEach((item) => {
+            const input = item.querySelector(':last-child');
+            input.value = '';
+            input.classList.remove('bad-input');
+        });
+        // projectNameInput.value = '';
+        // projectNameInput.classList.remove('bad-input');
+        
+    }
+
+    CreateMainContent(currentProject){
+        const mainContent = document.querySelector('.main-content');
+        if(mainContent){
+            mainContent.remove();
+        }
+        this.content.appendChild(createMainContent(currentProject));
     }
 }

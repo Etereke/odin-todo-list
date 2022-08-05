@@ -116,6 +116,7 @@ body{
     border: 2px solid black;
     border-radius: 20px;
     padding: 5px 0px;
+    margin-left: 5px;
     width: 60px;
     font-weight: bold;
     cursor: pointer;
