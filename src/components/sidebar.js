@@ -22,9 +22,36 @@ function createAddBtn(){
     const addBtn = document.createElement('div');
     addBtn.classList.add('add-project');
     const span = document.createElement('span');
-    span.textContent = '+Add';
+    span.textContent = '+New Project';
     addBtn.appendChild(span);
     return addBtn;
+}
+
+function createAddInputField(){
+    const inputDiv = document.createElement('div');
+    inputDiv.classList.add('add-project-input');
+    inputDiv.hidden = true;
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.id = 'new-project-name';
+
+    const addBtn = document.createElement('button');
+    addBtn.id = 'add-new-project';
+    addBtn.textContent = 'Add';
+    const cancelBtn = document.createElement('button');
+    cancelBtn.id = 'cancel-new-project';
+    cancelBtn.textContent = 'Cancel';
+
+    const buttonGroup = document.createElement('div');
+    buttonGroup.classList.add('add-new-project-btns');
+    buttonGroup.appendChild(addBtn);
+    buttonGroup.appendChild(cancelBtn);
+
+    inputDiv.appendChild(input);
+    inputDiv.appendChild(buttonGroup);
+    
+    return inputDiv;
 }
 
 export default function createSidebar(projects){
@@ -35,6 +62,6 @@ export default function createSidebar(projects){
     sidebar.appendChild(createDiv('project-header', 'Projects: '));
     sidebar.appendChild(createProjects(projects));
     sidebar.appendChild(createAddBtn());
-    
+    sidebar.appendChild(createAddInputField());
     return sidebar;
 }

@@ -5,16 +5,20 @@ export default class LogicHandler{
         this.projectList = [];
         this.defaultProject = new Project("Default Tasks");
         const defaultProjectRaw = JSON.parse(localStorage.getItem('defaultProject'));
-        for(let task of defaultProjectRaw.tasks){
-            this.defaultProject.addTask(task);
+        if(defaultProjectRaw){
+            for(let task of defaultProjectRaw.tasks){
+                this.defaultProject.addTask(task);
+            }
         }
         const projectsRaw = JSON.parse(localStorage.getItem('projects'));
-        for(let projectRaw of projectsRaw){
-            let project = new Project(projectRaw.name);
-            for(let task of projectRaw.taskList){
-                project.tasks.push(task);
+        if(projectsRaw){
+            for(let projectRaw of projectsRaw){
+                let project = new Project(projectRaw.name);
+                for(let task of projectRaw.tasks){
+                    project.tasks.push(task);
+                }
+                this.projectList.push(project);
             }
-            this.projectList.push(project);
         }
         this.currentProjectIndex = -1;
     }
@@ -29,6 +33,9 @@ export default class LogicHandler{
             return this.projectList[this.currentProjectIndex];
         }
     }
+    GetCurrentIndex(){
+        return this.currentProjectIndex;
+    }
     SetCurrentProject(idx){
         this.currentProjectIndex = idx;
     }
@@ -41,7 +48,7 @@ export default class LogicHandler{
         }
     }
     WriteToStorage(){
-        localStorage.setItem(defaultProject, JSON.parse(this.defaultProject));
-        localStorage.setItem(projects, JSON.parse(this.projectList));
+        localStorage.setItem('defaultProject', JSON.stringify(this.defaultProject));
+        localStorage.setItem('projects', JSON.stringify(this.projectList));
     }
 }

@@ -66,7 +66,7 @@ body{
     
 }
 
-.add-project > span:hover, .project-item:hover, .default-project:hover, .task-add > span:hover{
+.add-project > span:hover, .project-item:hover, .default-project:hover, .task-add > span:hover, .active-project{
     background-color: steelblue;
     color: white;
 }
@@ -182,4 +182,24 @@ body{
 
 .prio-low:hover{
     background-color: green;
+}
+
+.bad-input{
+    outline: 1px solid red;
+}
+
+.add-new-project-btns > button{
+    margin-left: 3px;
+    background-color: steelblue;
+    color: white;
+    border: 2px solid black;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#new-project-name{
+    padding: 5px;
+    border: none;
+    border-radius: 20px;
 }
