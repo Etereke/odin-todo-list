@@ -1,6 +1,7 @@
-import createSidebar from './components/sidebar';
 import { Project } from './data-classes/project';
 import { Task } from './data-classes/task';
+import DOMHandler from './handler-classes/DOM-handler';
+import LogicHandler from './handler-classes/logic-handler';
 import './style.css';
 const content = document.querySelector('.content');
 
@@ -33,21 +34,37 @@ localStorage.defaultProject = JSON.stringify(defaultProjectTest);
 // let stProject = JSON.parse(localStorage.projects);
 // console.log(stProject);
 // localStorage.clear();
-const projectsRaw = JSON.parse(localStorage.projects);
-const defaultProjectRaw = JSON.parse(localStorage.defaultProject);
-const defaultProject = new Project(defaultProjectRaw.name);
-for(let task of defaultProjectRaw.tasks){
-    defaultProject.addTask(task);
-}
-console.log(defaultProject);
-const projectlistTester = [];
 
+// const defaultProjectRaw = JSON.parse(localStorage.defaultProject);
+// const defaultProject = new Project(defaultProjectRaw.name);
+// for(let task of defaultProjectRaw.tasks){
+//     defaultProject.addTask(task);
+// }
+// console.log(defaultProject);
+
+
+// const projectsRaw = JSON.parse(localStorage.projects);
+// console.log(projectsRaw);
+// let projectList = [];
+// for(let projectRaw of projectsRaw){
+//     let project = new Project(projectRaw.name);
+//     for(let task of projectRaw.taskList){
+//         project.tasks.push(task);
+//     }
+//     projectList.push(project);
+// }
+// console.log(projectList);
+const logic = new LogicHandler();
+const DOM = new DOMHandler();
+DOM.BuildSite(logic.GetProjectList(), logic.GetCurrentProject());
+// console.log(logic);
 // content.innerHTML = '';
-// content.appendChild(createSidebar());
+// content.appendChild(createSidebar(logic.GetProjectList()));
 
-function addProject(projectlist, name){
-    projectlist.push(new Project(name));
-    console.log(projectlistTester);
-}
+// const projectlistTester = [];
+// function addProject(projectlist, name){
+//     projectlist.push(new Project(name));
+//     console.log(projectlistTester);
+// }
 
-document.querySelector('.add-project').addEventListener('click', addProject.bind(null, projectlistTester, 'New Project'));
+// document.querySelector('.add-project').addEventListener('click', addProject.bind(null, projectlistTester, 'New Project'));

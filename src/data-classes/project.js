@@ -9,4 +9,7 @@ export class Project{
     getTask(index){
         return tasks[index];
     }
+    deleteTask(idx){
+        this.tasks.splice(idx, 1);
+    }
 }
