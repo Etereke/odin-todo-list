@@ -133,7 +133,7 @@ body{
     font-size: 1rem;
 }
 
-.task-add-form{
+.task-add-form, .task-edit-form{
     margin-top: 20px;
     width: max(40%, 500px);
 
@@ -203,4 +203,14 @@ body{
     padding: 5px;
     border: none;
     border-radius: 20px;
+}
+
+.task-finished{
+    background-color: rgb(21, 243, 21);
+    color: gray;
+    text-decoration: line-through;
+}
+
+.task-finished:hover{
+    background-color: rgb(21, 243, 21);
 }

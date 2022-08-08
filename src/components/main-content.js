@@ -1,3 +1,18 @@
+//Main content (or the currently viewed project) component
+export default function createMainContent(project){
+    const mainContent = document.createElement('div');
+    mainContent.classList.add('main-content');
+    mainContent.appendChild(createHeader(project.name));
+    mainContent.appendChild(createTasklist(project.tasks));
+    mainContent.appendChild(createTaskAdd());
+    mainContent.appendChild(createTaskAddForm());
+    mainContent.appendChild(createTaskEditForm());
+    return mainContent;
+}
+
+
+
+
 function createHeader(name){
     const contentHeader = document.createElement('div');
     contentHeader.classList.add('content-header');
@@ -16,6 +31,9 @@ function createTaskrow(idx, task){
     taskrow.classList.add('task-row');
     taskrow.classList.add(`prio-${task.prio}`);
     taskrow.dataset.idx = idx;
+    if(task.finished){
+        taskrow.classList.add('task-finished');
+    }
 
     const taskName = document.createElement('div');
     taskName.classList.add('task-name');
@@ -71,6 +89,38 @@ function createTaskAdd(){
     return taskAdd;
 }
 
+function createTaskEditForm(){
+    const taskEditForm = document.createElement('div');
+    taskEditForm.classList.add('task-edit-form');
+    taskEditForm.classList.add('hidden');
+    taskEditForm.innerHTML = `<div class="task-edit-name edit-input-field">
+    <label for="task-name">Task</label>
+    <input type="text" name="task-name" id="task-name" data-field="name">
+</div>
+<div class="task-edit-date edit-input-field">
+    <label for="task-date">Due date</label>
+    <input type="date" name="task-date" id="task-date" data-field="date">
+</div>
+<div class="task-edit-desc edit-input-field">
+    <label for="task-desc">Description</label>
+    <textarea name="task-desc" id="task-desc" cols="30" rows="10" data-field="desc"></textarea>
+</div>
+
+<div class="task-edit-prio edit-input-field" data-field="prio">
+    <label for="task-prio">Priority</label>
+    <select name="task-prio" id="task-prio">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+    </select>
+</div>
+
+<div class="add-btns">
+    <button class="edit-task-btn">Edit</button>
+</div>`;
+    return taskEditForm;
+}
+
 function createTaskAddForm(){
     const taskAddForm = document.createElement('div');
     taskAddForm.classList.add('task-add-form');
@@ -102,14 +152,4 @@ function createTaskAddForm(){
     <button class="cancel-new-task-btn">Cancel</button>
 </div>`;
     return taskAddForm;
-}
-
-export default function createMainContent(project){
-    const mainContent = document.createElement('div');
-    mainContent.classList.add('main-content');
-    mainContent.appendChild(createHeader(project.name));
-    mainContent.appendChild(createTasklist(project.tasks));
-    mainContent.appendChild(createTaskAdd());
-    mainContent.appendChild(createTaskAddForm());
-    return mainContent;
 }

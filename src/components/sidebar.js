@@ -1,3 +1,18 @@
+//Sidebar component
+export default function createSidebar(projects){
+    const sidebar = document.createElement('div');
+    sidebar.classList.add('sidebar');
+
+    sidebar.appendChild(createDiv('default-project', 'Default Tasks'));
+    sidebar.appendChild(createDiv('project-header', 'Projects: '));
+    sidebar.appendChild(createProjects(projects));
+    sidebar.appendChild(createAddBtn());
+    sidebar.appendChild(createAddInputField());
+    return sidebar;
+}
+
+
+
 function createDiv(divClass, divText){
     const div = document.createElement('div');
     div.classList.add(divClass);
@@ -52,16 +67,4 @@ function createAddInputField(){
     inputDiv.appendChild(buttonGroup);
     
     return inputDiv;
-}
-
-export default function createSidebar(projects){
-    const sidebar = document.createElement('div');
-    sidebar.classList.add('sidebar');
-
-    sidebar.appendChild(createDiv('default-project', 'Default Tasks'));
-    sidebar.appendChild(createDiv('project-header', 'Projects: '));
-    sidebar.appendChild(createProjects(projects));
-    sidebar.appendChild(createAddBtn());
-    sidebar.appendChild(createAddInputField());
-    return sidebar;
 }

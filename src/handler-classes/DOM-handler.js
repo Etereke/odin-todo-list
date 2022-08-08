@@ -1,6 +1,7 @@
 import createMainContent from "../components/main-content";
 import createSidebar from "../components/sidebar";
 
+//Handles changes to the DOM - mostly used to rebuild the whole site after a change occurs in the logic
 export default class DOMHandler{
     constructor(){
         this.content = document.querySelector('.content');
@@ -12,6 +13,15 @@ export default class DOMHandler{
         this.CreateMainContent(currentProject);
     }
 
+    CreateMainContent(currentProject){
+        const mainContent = document.querySelector('.main-content');
+        if(mainContent){
+            mainContent.remove();
+        }
+        this.content.appendChild(createMainContent(currentProject));
+    }
+
+    //Function that handles changing project (when clicking a project on the sidebar)
     SetActiveProject(idx, project){
         const active = document.querySelector('.active-project');
         if(active){
@@ -26,6 +36,7 @@ export default class DOMHandler{
         this.CreateMainContent(project);
     }
 
+    //Toggle functions for the New Project, New Task and Edit buttons
     ToggleNewProjectForm(){
         const addProject = document.querySelector('.add-project');
         const addProjectForm = document.querySelector('.add-project-input');
@@ -46,16 +57,21 @@ export default class DOMHandler{
             input.value = '';
             input.classList.remove('bad-input');
         });
-        // projectNameInput.value = '';
-        // projectNameInput.classList.remove('bad-input');
-        
+        [...document.querySelectorAll('.edit-btn')].forEach((item) => {
+            console.log(item);
+            item.disabled = !item.disabled;
+        });
     }
 
-    CreateMainContent(currentProject){
-        const mainContent = document.querySelector('.main-content');
-        if(mainContent){
-            mainContent.remove();
-        }
-        this.content.appendChild(createMainContent(currentProject));
+    ToggleEditTaskForm(task){
+        const editTaskForm = document.querySelector('.task-edit-form');
+        const addTask = document.querySelector('.task-add');
+        addTask.hidden = !addTask.hidden;
+        editTaskForm.classList.toggle('hidden');
+        [...document.querySelectorAll('.edit-input-field')].forEach((item) => {
+            const input = item.querySelector(':last-child');
+            input.value = task[input.dataset.field];
+            input.classList.remove('bad-input');
+        });
     }
 }

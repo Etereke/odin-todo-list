@@ -1,13 +1,17 @@
 import { Project } from "../data-classes/project";
+import { Task } from "../data-classes/task";
 
+
+//Handles the logic of the site - loads the content from local storage, applies changes in the memory, and writes everything back to local storage when a change happens
 export default class LogicHandler{
+    //Initializes the default project and the projectlist from local storage
     constructor(){
         this.projectList = [];
         this.defaultProject = new Project("Default Tasks");
         const defaultProjectRaw = JSON.parse(localStorage.getItem('defaultProject'));
         if(defaultProjectRaw){
             for(let task of defaultProjectRaw.tasks){
-                this.defaultProject.addTask(task);
+                this.defaultProject.addTask(new Task(task.name, task.date, task.desc, task.prio, task.finished));
             }
         }
         const projectsRaw = JSON.parse(localStorage.getItem('projects'));
@@ -16,7 +20,7 @@ export default class LogicHandler{
                 let project = new Project(projectRaw.name);
                 if(projectRaw.tasks){
                     for(let task of projectRaw.tasks){
-                        project.tasks.push(task);
+                        project.addTask(new Task(task.name, task.date, task.desc, task.prio, task.finished));
                     }
                 }
                 this.projectList.push(project);
@@ -24,6 +28,7 @@ export default class LogicHandler{
         }
         this.currentProjectIndex = -1;
     }
+    
     GetProjectList(){
         return this.projectList;
     }
